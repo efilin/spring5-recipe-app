@@ -10,12 +10,12 @@ import java.util.Set;
 public class Recipe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String description;
     private Integer prepTime;
-    private Integer CookTime;
+    private Integer cookTime;
     private Integer servings;
     private String source;
     private String url;
@@ -29,6 +29,14 @@ public class Recipe {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getDescription() {
         return description;
@@ -47,11 +55,11 @@ public class Recipe {
     }
 
     public Integer getCookTime() {
-        return CookTime;
+        return cookTime;
     }
 
     public void setCookTime(Integer cookTime) {
-        CookTime = cookTime;
+        this.cookTime = cookTime;
     }
 
     public Integer getServings() {
@@ -100,5 +108,13 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }
