@@ -8,6 +8,7 @@ import javax.persistence.*;
  * Created by efilin on 13.01.2021.
  */
 @Data
+@EqualsAndHashCode(exclude = {"recipe"})
 @Entity
 public class Notes {
 
