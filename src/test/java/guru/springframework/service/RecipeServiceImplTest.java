@@ -10,10 +10,8 @@ import org.mockito.MockitoAnnotations;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by efilin on 17.01.2021.
@@ -25,6 +23,7 @@ public class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
@@ -33,16 +32,18 @@ public class RecipeServiceImplTest {
     }
 
     @Test
-    public void getRecipes() {
-        Recipe recipe = new Recipe();
-        Set<Recipe> recipesData = new HashSet<>();
-        recipesData.add(recipe);
+    public void getRecipes() throws Exception {
 
-        when(recipeRepository.findAll()).thenReturn(recipesData);
+        Recipe recipe = new Recipe();
+        HashSet receipesData = new HashSet();
+        receipesData.add(recipe);
+
+        when(recipeService.getRecipes()).thenReturn(receipesData);
 
         Set<Recipe> recipes = recipeService.getRecipes();
 
         assertEquals(recipes.size(), 1);
-        verify(recipeRepository,times(1)).findAll();
+        verify(recipeRepository, times(1)).findAll();
     }
+
 }
